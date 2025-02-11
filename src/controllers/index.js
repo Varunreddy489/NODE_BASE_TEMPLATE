@@ -1,5 +1,11 @@
-export const info = (req, res) => {
-  return res.json({
-    success: true,
-  });
+const {
+  createAirplaneController,
+  getAirplanesController,
+  getAirplaneByIdController,
+} = require("./airplane.controller.js");
+
+module.exports = {
+  getAirplanesController,
+  createAirplaneController,
+  getAirplaneByIdController,
 };

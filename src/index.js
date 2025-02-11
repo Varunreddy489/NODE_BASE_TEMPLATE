@@ -1,15 +1,17 @@
-import express from "express";
+const express = require("express");
 
-import { apiRoutes } from "./routes/index.js";
-import { PORT,logger } from "./config/index.js";
+const apiRoutes = require("./routes/index"); 
 
-const app=express();
+const { PORT, logger } = require("./config/index");
 
-app.use('/api',apiRoutes)
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.listen(PORT,()=>{
-    console.log(`Server is running on port ${PORT}`);
-    console.log("Jai Shree Ram");
-    logger.info(`Server is running on port ${PORT}`)
-}) 
+app.use("/api", apiRoutes);
 
+app.listen(PORT, function () {
+  console.log(`Server is running on port ${PORT}`);
+  console.log("Jai Shree Ram");
+  logger.info(`Server is running on port ${PORT}`);
+});

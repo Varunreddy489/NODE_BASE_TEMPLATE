@@ -1,8 +1,8 @@
-import Router from "express";
-import { info } from "../../controllers/index.js";
+const express = require("express");
+const airplaneRoutes = require("./airplane.routes.js");
 
-const router = Router();
+const router = express.Router();
 
-router.get("/info",info);
+router.use("/airplanes", airplaneRoutes);
 
-export { router as v1Routes };
+module.exports = router;
