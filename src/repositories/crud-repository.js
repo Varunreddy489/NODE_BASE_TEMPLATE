@@ -20,6 +20,13 @@ class CrudRepository {
           id: id,
         },
       });
+
+      if (!response) {
+        throw new AppError(
+          "Not able to find the resource",
+          StatusCodes.NOT_FOUND
+        );
+      }
       return response;
     } catch (error) {
       logger.error("error in crud repo destroy:", error);
@@ -31,9 +38,12 @@ class CrudRepository {
     try {
       const response = await this.model.findByPk(data);
 
-        if (!response){
-          throw new AppError('Not able to find the resource', StatusCodes.NOT_FOUND);
-        }
+      if (!response) {
+        throw new AppError(
+          "Not able to find the resource",
+          StatusCodes.NOT_FOUND
+        );
+      }
 
       return response;
     } catch (error) {

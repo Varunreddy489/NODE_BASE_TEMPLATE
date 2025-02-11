@@ -4,6 +4,7 @@ const {
   getAirplane,
   getAirplanes,
   createAirplane,
+  destroyAirplane,
 } = require("../services/airplane.service.js");
 const { ErrorResponse, SuccessResponse } = require("../utils/common");
 
@@ -65,8 +66,27 @@ async function getAirplaneByIdController(req, res) {
   }
 }
 
+async function destroyAirplaneController(req, res) {
+  try {
+    const airplane = await destroyAirplane(req.params.id);
+    SuccessResponse.data = airplane;
+
+    return res.status(StatusCodes.CREATED).json({
+      SuccessResponse,
+    });
+  } catch (error) {
+    ErrorResponse.error = error;
+    console.log(error);
+
+    return res.status(error.statusCode).json({
+      ErrorResponse,
+    });
+  }
+}
+
 module.exports = {
   getAirplanesController,
   createAirplaneController,
   getAirplaneByIdController,
+  destroyAirplaneController,
 };

@@ -60,8 +60,29 @@ async function getAirplane(id) {
   }
 }
 
+async function destroyAirplane(id) {
+  try {
+    const response = await airplaneRepository.destroy(id);
+    return response;
+  } catch (error) {
+    if (error.statusCode === StatusCodes.NOT_FOUND) {
+      throw new AppError(
+        "The airplane does not exist to delete",
+        StatusCodes.NOT_FOUND
+      );
+    }
+
+    console.log(error);
+    throw new AppError(
+      "Cananot get airplanes",
+      StatusCodes.INTERNAL_SERVER_ERROR
+    );
+  }
+}
+
 module.exports = {
   getAirplane,
   getAirplanes,
   createAirplane,
+  destroyAirplane,
 };
