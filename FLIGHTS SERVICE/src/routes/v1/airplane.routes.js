@@ -1,10 +1,10 @@
 const express = require("express");
 
 const {
-    getAirplanesController,
-    createAirplaneController,
-    destroyAirplaneController,
-    getAirplaneByIdController,
+  getAirplanesController,
+  createAirplaneController,
+  destroyAirplaneController,
+  getAirplaneByIdController,
 } = require("../../controllers");
 const { validateCreateRequest } = require("../../middleware");
 
