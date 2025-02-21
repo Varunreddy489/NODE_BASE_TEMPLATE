@@ -6,13 +6,13 @@ function validateCreateRequest(req, res, next) {
     ErrorResponse.message = "something went wrong while creating airplane";
 
     ErrorResponse.error = new AppError(
-      ["Model number nort found in the incoming request in the correct form"], 
+      ["Model number nort found in the incoming request in the correct form"],
       StatusCodes.BAD_REQUEST
     );
 
     return res.status(StatusCodes.BAD_REQUEST).json({
       error: ErrorResponse,
-    }); 
+    });
   }
   next();
 }

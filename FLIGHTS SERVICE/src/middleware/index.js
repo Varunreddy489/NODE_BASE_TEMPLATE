@@ -1,5 +1,4 @@
-const {validateCreateRequest} = require("./airplane.middleware.js");
-
 module.exports = {
-  validateCreateRequest,
-};
+  CityMiddleware: require('./city.middleware'),
+  AirplaneMiddleware: require('./airplane.middleware'),
+}
