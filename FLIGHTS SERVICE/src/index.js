@@ -1,6 +1,6 @@
 const express = require("express");
 
-const apiRoutes = require("./routes/index"); 
+const apiRoutes = require("./routes/index");
 
 const { PORT, logger } = require("./config/index");
 
@@ -15,3 +15,4 @@ app.listen(PORT, function () {
   console.log("Jai Shree Ram");
   logger.info(`Server is running on port ${PORT}`);
 });
+
